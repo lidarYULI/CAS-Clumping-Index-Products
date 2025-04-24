@@ -1,13 +1,13 @@
 # CAS-Clumping-Index-Products
-The canopy clumping index (CI) is a measurement of the spatial distribution pattern of foliage. Foliage commonly has a non-random distribution, which is aggregated at the canopy, branch, and shoot scales. Theoretically, CI is >0. When CI < 1, the foliage has a clumping distribution. When CI > 1, the foliage has a regular distribution. The foliage has a random distribution when CI = 1. This software, programmed by JavaScript based on Google Earth Engine (GEE), is to produce global CI products using the MODIS dataset. It is a visualization software that runs directly in the GEE to provide CI downloading at a user-defined scale.
+The canopy clumping index (CI) measures the spatial distribution pattern of foliage. Foliage is commonly non-randomly distributed. It is aggregated at the canopy, branch, and shoot scales. Theoretically, CI is >0. When CI < 1, the foliage has a clumping distribution. The foliage has a random distribution when CI = 1. This software, programmed by JavaScript based on Google Earth Engine (GEE), is to produce global CI products using the MODIS dataset. It is a visualization software that runs directly in the GEE to provide CI downloading at a user-defined scale.
 
 
 Now, CI products are released in TIFF format from March 1, 2000, to May 1, 2020, at regional or global scales, with temporal scales ranging from daily to monthly and yearly. Publications referring to the methods and technologies used are listed at the end of this page. The program mainly consists of the following steps:
 
-Filter image datasets by the designated date range to obtain the desired image collections.
-Generate a multi-band image containing the required data and stack it in an image collection for CI retrieval.
+Filter image datasets by the designated date range to obtain image collections.
+Generate a multi-band images containing the required data and stack them in an image collection for CI retrieval.
 Retrieve daily CI based on band calculations and exclude low-quality pixels.
-Apply the Savitzky-Golay smoothing filter (SG-filter) to the daily CI collection, then composite a monthly or yearly CI image by quality indicator, and provide the final CI for download.
+Apply the Savitzky-Golay smoothing filter (SG-filter) to the daily CI collection, then composite a monthly or yearly CI by quality indicator, and provide downloading for CI products.
 
 
 The descriptions of software usage are as follows: 
@@ -16,7 +16,7 @@ The initialized interface includes a date slider at the top of the map, which pr
 
 <img src="https://github.com/CUGLiving/Clumping-Index-Products/blob/main/softwareShots/startedInterface.jpg" width='500px'>
 
-1) Input the start and end dates, then click on one of the temporal scales. The desired product options will be returned.
+1) Input the start and end dates, then click on a temporal scale. The product date options will be appeared.
 
 <img src="https://github.com/CUGLiving/Clumping-Index-Products/blob/main/softwareShots/inputdate.jpg" width='500px'>
 
@@ -26,27 +26,27 @@ The initialized interface includes a date slider at the top of the map, which pr
 <img src="https://github.com/CUGLiving/Clumping-Index-Products/blob/main/softwareShots/daily.jpg" height='300px' width='200px'/> <img         src="https://github.com/CUGLiving/Clumping-Index-Products/blob/main/softwareShots/monthly.jpg" height='300px' width='200px'/> <img         src="https://github.com/CUGLiving/Clumping-Index-Products/blob/main/softwareShots/yearly.jpg" height='300px' width='200px'/>
 </p>
 
-3) You can select the spatial scale to export or view the product, and then new final buttons will appear.
+3) Select to get global or regional products.
 
 <img src="https://github.com/CUGLiving/Clumping-Index-Products/blob/main/softwareShots/dailyImg.jpg" width="500px">
 
-4) After clicking 'View,' the corresponding image named by its date will be added to the map.
+4) Click 'View,' the corresponding image named by its date will be added to the map.
 
 <img src="https://github.com/CUGLiving/Clumping-Index-Products/blob/main/softwareShots/loadLayer.jpg" width="500px">
 
-5) Due to constraints by GEE, exporting the global extent (60°S–90°N, 180°E–180°W) product will automatically clip it into nine equal-sized pieces. You can set the file name and save folder.
+5) Click "download", the GEE downloading panel will be appeared. Due to constraints by GEE, downloading the global extent (60°S–90°N, 180°E–180°W) product will be automatically divided into nine equal-sized pieces. You can set the file name and save folder.
 
 <p float="left">
 <img src="https://github.com/CUGLiving/Clumping-Index-Products/blob/main/softwareShots/export.jpg" width="500px"> <img src="https://github.com/CUGLiving/Clumping-Index-Products/blob/main/softwareShots/exportSettings.jpg" width="500px">
 </p>
  
-6) After selecting 'draw a rectangle to export or view,' you can draw one or several rectangles and select one to view or download. The small regional image can be downloaded as a single image file to your Google Drive.
+6) When select 'draw a rectangle to export or view,' you can draw one or several rectangles and select one of them to view or download. The small regional image can be downloaded directly to your Google Drive.
 
 <img src="https://github.com/CUGLiving/Clumping-Index-Products/blob/main/softwareShots/regionalExport.jpg" width="500px">
 
-All input datasets are provided by the GEE Data Catalog except for a fraction of vegetation coverage (FCOVER) and global land cover data. The land cover image is a single-year product, and the FCOVER is a monthly product. We have uploaded the FCOVER up to May 2020. Future FCOVER data will be uploaded once the latest product is available. The land cover product can be acquired at http://bioval.jrc.ec.europa.eu/products/glc2000/glc2000.php and the FCOVER data at https://land.copernicus.vgt.vito.be/PDF/portal/Application.html#Home.
+All input datasets are provided by the GEE Data Catalog except for the fraction of vegetation coverage (FCOVER) and global land cover data. The land cover image is a single-year product, and the FCOVER is the monthly products. We have uploaded the FCOVER up to May 2020. The FCOVER data will be continuously uploaded once the latest product is available. The land cover product can be acquired at http://bioval.jrc.ec.europa.eu/products/glc2000/glc2000.php and the FCOVER data at https://land.copernicus.vgt.vito.be/PDF/portal/Application.html#Home.
 
-The products from March 2000 to May 2020 are currently available for download. Fortunately, you can still download products outside this date range because the program is designed to automatically use the nearest date-adjacent FCOVER data.
+The products from March 2000 to May 2020 are currently available for download. Fortunately, downloading products outside this date range is still available because the program is designed to automatically detch the date-adjacent FCOVER data.
 
 
 There are several instructions, as follows:
